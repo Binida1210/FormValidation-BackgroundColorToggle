@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+</head>
+<body>
+
+  <div class="bg-toggle-button">
+      <i class="icon fa-solid fa-toggle-on"></i>
+  </div>
+
+  <form action="" method="POST" class="form" id="form-1">
+    <h1 class="form-tag">Create your account</h1>
+    <p class="form-subtag">Already have an account? <a href="signin.html" class="">Sign In</a></p>
+
+    <div class="sign-with">
+      <a class="icon" href="">
+        <p>Google</p>
+        <img src="https://www.svgrepo.com/show/353817/google-icon.svg" alt="" >
+      </a>
+
+      <a class="icon" href="">
+        <p>Facebook</p>
+        <img src="https://static.vecteezy.com/system/resources/previews/016/716/481/non_2x/facebook-icon-free-png.png">
+      </a>
+
+      <a class="icon" href="">
+        <p>Instagram</p>
+        <img src="https://th.bing.com/th/id/OIP.iMfdeKHhU0SN_Jx1MAmugwHaHa?cb=iwp2&w=1913&h=1913&rs=1&pid=ImgDetMain">
+      </a>
+
+      <a class="icon" href="">
+        <p>LinkedIn</p>
+        <img src="https://www.svgrepo.com/show/75820/linkedin.svg">
+      </a>
+    </div>
+
+    <div class="form-group">
+      <label for="fullname" class="form-label"></label>
+      <input type="text" id="fullname" name="fullname" placeholder="Fullname">
+      <span class="form-messsage"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label"></label>
+      <input type="email" id="email" name="email" placeholder="Email">
+      <span class="form-messsage"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-label"></label>
+      <input type="password" id="password" name="password" placeholder="Password">
+      <span class="form-messsage"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="password_confirmation" class="form-label"></label>
+      <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Password Confirm">
+      <span class="form-messsage"></span>
+    </div>
+
+    <div class="form-agreement">
+      <label for="term-agreement" class="form-label">Agree to our <a href="" class="term">Terms of Service</a> and <a href="" class="policy">Privacy Policy</a></label>
+      <input type="checkbox" name="term-agreement" id="term-agreement" required>
+    </div>
+
+    <button type="submit">Sign up</button>
+  </form>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="validator.js"></script>
+  <script src="https://kit.fontawesome.com/fa5c94950d.js" crossorigin="anonymous"></script>
+  <script>
+
+      Validator({
+        form: '#form-1',
+        errorSelector: '.form-messsage',
+        rules: [
+          Validator.isRequired("#fullname", "Vui lòng nhập tên đầy đủ"),
+          Validator.isRequired("#email", "Vui lòng nhập email của bạn"),
+          Validator.isRequired("#password", "Vui lòng nhập mật khẩu của bạn"),
+          Validator.isRequired("#password_confirmation", "Vui lòng xác minh mật khẩu của bạn"),
+
+          Validator.isEmail('#email', "Vui lòng nhập đúng định dạng email"),
+
+          Validator.minLength('#password', 6, "Vui lòng nhập mật khẩu chứa 6~15 ký tự"),
+          Validator.maxLength('#password', 15, "Vui lòng nhập mật khẩu chứa 6~15 ký tự"),
+
+          Validator.isConfirm('#password_confirmation', function() {
+            return document.querySelector('#form-1 .form-group #password').value;
+          }, "Mật khẩu bạn vừa nhập không trùng khớp")
+        ],
+        onSubmit: function(data) {
+          console.log(data);
+        }
+      });
+  </script>
+  <script src="background-toggle.js"></script>
+</body>
+  
+</html>
